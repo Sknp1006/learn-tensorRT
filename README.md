@@ -3,7 +3,7 @@
 ## 1.准备环境
 - [x] Ubuntu WSL2：22.04
 - [x] CUDA：12.1
-- [x] cuDNN：8.9.2.26
+- [x] cuDNN：8.9.7.29
 - [x] 最新的Nvidia显卡驱动
 
 ### 1.1 安装cuda和cudnn
@@ -52,7 +52,9 @@ Build cuda_12.1.r12.1/compiler.32688072_0
 
 #### 1.1.2 安装cudnn
 
-> deb安装包：[cuDNN Download | NVIDIA Developer](https://developer.nvidia.com/rdp/cudnn-download) 
+> deb安装包(cudnn-local-repo-ubuntu2204-8.9.7.29_1.0-1_amd64.deb)：
+>   - [cuDNN Download | NVIDIA Developer](https://developer.nvidia.com/rdp/cudnn-download)
+>   - [百度网盘](https://pan.baidu.com/s/1sEN0m-OYk5cieKxQkVd8WQ?pwd=xqkh)
 >
 > 参考链接：[Installation Guide - NVIDIA Docs](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html) 
 >
@@ -63,29 +65,26 @@ Build cuda_12.1.r12.1/compiler.32688072_0
 > sample安装路径：/usr/src/cudnn_samples_v8
 
 ```bash
-sudo dpkg -i cudnn-local-repo-ubuntu2204-8.9.2.26_1.0-1_amd64.deb
-
+sudo dpkg -i cudnn-local-repo-ubuntu2204-8.9.7.29_1.0-1_amd64.deb
+sudo cp /var/cudnn-local-repo-ubuntu2204-8.9.7.29/cudnn-local-08A7D361-keyring.gpg /usr/share/keyrings/
 sudo apt update
 
-sudo apt install libcudnn8=8.9.2.26-1+cuda12.1
-sudo apt install libcudnn8-dev=8.9.2.26-1+cuda12.1
-sudo apt install libcudnn8-samples=8.9.2.26-1+cuda12.1
+sudo apt install cudnn
+
+sudo apt install libcudnn8=8.9.7.29-1+cuda12.2
+sudo apt install libcudnn8-dev=8.9.7.29-1+cuda12.2
+sudo apt install libcudnn8-samples=8.9.7.29-1+cuda12.2
 ```
 
 - 查看libcudnn8的安装情况：
 
 ```bash
-> apt search libcudnn
-Sorting... Done
-Full Text Search... Done
-libcudnn8/unknown,now 8.9.2.26-1+cuda12.1 amd64 [installed]
-  cuDNN runtime libraries
-
-libcudnn8-dev/unknown,now 8.9.2.26-1+cuda12.1 amd64 [installed]
-  cuDNN development libraries and headers
-
-libcudnn8-samples/unknown,now 8.9.2.26-1+cuda12.1 amd64 [installed]
-  cuDNN samples
+> dpkg-query -W libcudnn8
+libcudnn8       8.9.7.29-1+cuda12.2
+> dpkg-query -W libcudnn8-dev
+libcudnn8-dev   8.9.7.29-1+cuda12.2
+> dpkg-query -W libcudnn8-samples
+libcudnn8-samples       8.9.7.29-1+cuda12.2
 ```
 
 - 运行sample：
@@ -101,7 +100,9 @@ make clean && make
 
 ### 1.2 安装TensorRT
 
->  deb安装包：[TensorRT 8.6 GA for Ubuntu 22.04 and CUDA 12.0 and 12.1 DEB local repo Package](https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/8.6.1/local_repos/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb) 
+>  deb安装包(nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb)：
+>   - [TensorRT 8.6 GA for Ubuntu 22.04 and CUDA 12.0 and 12.1 DEB local repo Package](https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/8.6.1/local_repos/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb)
+>   - [百度网盘](https://pan.baidu.com/s/1sEN0m-OYk5cieKxQkVd8WQ?pwd=xqkh)
 >
 > 参考链接：[Debian Installation](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-861/install-guide/index.html#installing-debian) 
 >
@@ -138,8 +139,10 @@ tensorrt        8.6.1.6-1+cuda12.0
 
 ```bash
 #begin env for trtexec
-export PATH=/usr/src/tensorrt/bin${PATH:+:${PATH}}
+export PATH=/usr/src/tensorrt/bin:$PATH
 #end env for trtexec
+
+> source .bashrc
 ```
 
 - 运行 `trtexec` 以验证是否正确安装
