@@ -54,7 +54,7 @@ Build cuda_12.1.r12.1/compiler.32688072_0
 
 > deb安装包(cudnn-local-repo-ubuntu2204-8.9.7.29_1.0-1_amd64.deb)：
 >   - [cuDNN Download | NVIDIA Developer](https://developer.nvidia.com/rdp/cudnn-download)
->   - [百度网盘](https://pan.baidu.com/s/1sEN0m-OYk5cieKxQkVd8WQ?pwd=xqkh)
+>   - [百度网盘](https://pan.baidu.com/s/1tcxxyhBh1wl5_toUFbcMGw?pwd=2013)
 >
 > 参考链接：[Installation Guide - NVIDIA Docs](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html) 
 >
@@ -102,7 +102,7 @@ make clean && make
 
 >  deb安装包(nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb)：
 >   - [TensorRT 8.6 GA for Ubuntu 22.04 and CUDA 12.0 and 12.1 DEB local repo Package](https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/8.6.1/local_repos/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-12.0_1.0-1_amd64.deb)
->   - [百度网盘](https://pan.baidu.com/s/1sEN0m-OYk5cieKxQkVd8WQ?pwd=xqkh)
+>   - [百度网盘](https://pan.baidu.com/s/1tcxxyhBh1wl5_toUFbcMGw?pwd=2013)
 >
 > 参考链接：[Debian Installation](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-861/install-guide/index.html#installing-debian) 
 >
@@ -149,7 +149,7 @@ export PATH=/usr/src/tensorrt/bin:$PATH
 
 #### 1.2.2 在windows安装
 
-- 下载对应版本的TensorRT：[百度网盘](https://pan.baidu.com/s/1sEN0m-OYk5cieKxQkVd8WQ?pwd=xqkh) 
+- 下载对应版本的TensorRT：[百度网盘](https://pan.baidu.com/s/1tcxxyhBh1wl5_toUFbcMGw?pwd=2013) 
 - 将压缩包解压到某个目录，例如 `C盘根目录` 
 - 创建用户环境变量：
   - 变量名：TensorRT_HOME
