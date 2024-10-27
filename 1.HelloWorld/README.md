@@ -392,54 +392,21 @@ TensorRT Python 运行时 API 直接映射到在 [C++ 中运行引擎](https://d
 
 ## 5. 词汇表
 
-B
-Batch 批
-A batch is a collection of inputs that can all be processed uniformly. Each instance in the batch has the same shape and flows through the network in exactly the same way. All instances can therefore be computed in parallel.
-批次是可以统一处理的输入的集合。批次中的每个实例都具有相同的形状，并以完全相同的方式流经网络。因此，所有实例都可以并行计算。
-Builder 建设者
-TensorRT’s model optimizer. The builder takes as input a network definition, performs device-independent and device-specific optimizations, and creates an engine. For more information about the builder, refer to the Builder API.
-TensorRT 的模型优化器。构建器将网络定义作为输入，执行独立于设备和特定于设备的优化，并创建引擎。有关构建器的更多信息，请参阅构建器 API 。
-D
-Dynamic batch 动态批次
-A mode of inference deployment where the batch size is not known until runtime. Historically, TensorRT treated batch size as a special dimension and the only dimension that was configurable at runtime. TensorRT 6 and later allow engines to be built such that all dimensions of inputs can be adjusted at runtime.
-一种推理部署模式，其中批量大小直到运行时才知道。从历史上看，TensorRT 将批量大小视为特殊维度，并且是运行时唯一可配置的维度。 TensorRT 6 及更高版本允许构建引擎，以便可以在运行时调整输入的所有维度。
-E
-Engine 引擎
-A representation of a model that has been optimized by the TensorRT builder. For more information about the engine, refer to the Execution API.
-已由 TensorRT 构建器优化的模型的表示。有关引擎的更多信息，请参阅执行 API 。
-Explicit batch 显式批处理
-An indication to the TensorRT builder that the model includes the batch size as one of the dimensions of the input tensors. TensorRT’s implicit batch mode allows the batch size to be omitted from the network definition and provided by the user at runtime, but this mode has been deprecated and is not supported by the ONNX parser.
-向 TensorRT 构建器指示模型将批量大小作为输入张量的维度之一。 TensorRT 的隐式批处理模式允许从网络定义中省略批处理大小并由用户在运行时提供，但此模式已被弃用，并且 ONNX 解析器不支持。
-F
-Framework integration 框架整合
-An integration of TensorRT into a framework such as TensorFlow, which allows model optimization and inference to be performed within the framework.
-将 TensorRT 集成到 TensorFlow 等框架中，允许在框架内执行模型优化和推理。
-N
-Network definition 网络定义
-A representation of a model in TensorRT. A network definition is a graph of tensors and operators.
-TensorRT 中模型的表示。网络定义是张量和运算符的图。
-O
-ONNX 奥恩克斯
-Open Neural Network eXchange. A framework-independent standard for representing machine learning models. For more information about ONNX, refer to onnx.ai.
-打开神经网络交换。用于表示机器学习模型的独立于框架的标准。有关 ONNX 的更多信息，请参阅onnx.ai 。
-ONNX parser ONNX 解析器
-A parser for creating a TensorRT network definition from an ONNX model. For more details on the C++ ONNX Parser, refer to the NvONNXParser or the Python ONNX Parser.
-用于从 ONNX 模型创建 TensorRT 网络定义的解析器。有关 C++ ONNX 解析器的更多详细信息，请参阅NvONNXParser或 Python ONNX 解析器。
-P
-Plan 计划
-An optimized inference engine in a serialized format. To initialize the inference engine, the application will first deserialize the model from the plan file. A typical application will build an engine once, and then serialize it as a plan file for later use.
-序列化格式的优化推理引擎。为了初始化推理引擎，应用程序将首先从计划文件中反序列化模型。典型的应用程序将构建一次引擎，然后将其序列化为计划文件以供以后使用。
-Precision 精确
-Refers to the numerical format used to represent values in a computational method. This option is specified as part of the TensorRT build step. TensorRT supports mixed precision inference with FP32, TF32, FP16, or INT8 precisions. Devices before NVIDIA Ampere Architecture default to FP32. NVIDIA Ampere Architecture and later devices default to TF32, a fast format using FP32 storage with lower-precision math.
-指计算方法中用于表示值的数字格式。此选项被指定为 TensorRT 构建步骤的一部分。 TensorRT 支持 FP32、TF32、FP16 或 INT8 精度的混合精度推理。 NVIDIA Ampere 架构之前的设备默认为 FP32。 NVIDIA Ampere 架构和更高版本的设备默认使用 TF32，这是一种使用具有较低精度数学的 FP32 存储的快速格式。
-R
-Runtime 运行时
-The component of TensorRT that performs inference on a TensorRT engine. The runtime API supports synchronous and asynchronous execution, profiling, enumeration, and querying of the bindings for engine inputs and outputs.
-在 TensorRT 引擎上执行推理的 TensorRT 组件。运行时 API 支持引擎输入和输出的绑定的同步和异步执行、分析、枚举和查询。
-T
-TF-TRT
-TensorFlow integration with TensorRT. Optimizes and executes compatible subgraphs, allowing TensorFlow to execute the remaining graph.
-TensorFlow 与 TensorRT 集成。优化并执行兼容的子图，允许 TensorFlow 执行剩余的图。
+| 英文术语 | 中文术语 | 解释 |
+| --- | --- | --- |
+| **Batch** | **批** | A batch is a collection of inputs that can all be processed uniformly. Each instance in the batch has the same shape and flows through the network in exactly the same way. All instances can therefore be computed in parallel. <br> 批次是可以统一处理的输入的集合。批次中的每个实例都具有相同的形状，并以完全相同的方式流经网络。因此，所有实例都可以并行计算。 |
+| **Builder** | **建设者** | TensorRT’s model optimizer. The builder takes as input a network definition, performs device-independent and device-specific optimizations, and creates an engine. For more information about the builder, refer to the Builder API. <br> TensorRT 的模型优化器。构建器将网络定义作为输入，执行独立于设备和特定于设备的优化，并创建引擎。有关构建器的更多信息，请参阅构建器 API。 |
+| **Dynamic batch** | **动态批次** | A mode of inference deployment where the batch size is not known until runtime. Historically, TensorRT treated batch size as a special dimension and the only dimension that was configurable at runtime. TensorRT 6 and later allow engines to be built such that all dimensions of inputs can be adjusted at runtime. <br> 一种推理部署模式，其中批量大小直到运行时才知道。从历史上看，TensorRT 将批量大小视为特殊维度，并且是运行时唯一可配置的维度。TensorRT 6 及更高版本允许构建引擎，以便可以在运行时调整输入的所有维度。 |
+| **Engine** | **引擎** | A representation of a model that has been optimized by the TensorRT builder. For more information about the engine, refer to the Execution API. <br> 已由 TensorRT 构建器优化的模型的表示。有关引擎的更多信息，请参阅执行 API。 |
+| **Explicit batch** | **显式批处理** | An indication to the TensorRT builder that the model includes the batch size as one of the dimensions of the input tensors. TensorRT’s implicit batch mode allows the batch size to be omitted from the network definition and provided by the user at runtime, but this mode has been deprecated and is not supported by the ONNX parser. <br> 向 TensorRT 构建器指示模型将批量大小作为输入张量的维度之一。TensorRT 的隐式批处理模式允许从网络定义中省略批处理大小并由用户在运行时提供，但此模式已被弃用，并且 ONNX 解析器不支持。 |
+| **Framework integration** | **框架整合** | An integration of TensorRT into a framework such as TensorFlow, which allows model optimization and inference to be performed within the framework. <br> 将 TensorRT 集成到 TensorFlow 等框架中，允许在框架内执行模型优化和推理。 |
+| **Network definition** | **网络定义** | A representation of a model in TensorRT. A network definition is a graph of tensors and operators. <br> TensorRT 中模型的表示。网络定义是张量和运算符的图。 |
+| **ONNX** | **奥恩克斯** | Open Neural Network eXchange. A framework-independent standard for representing machine learning models. For more information about ONNX, refer to onnx.ai. <br> 打开神经网络交换。用于表示机器学习模型的独立于框架的标准。有关 ONNX 的更多信息，请参阅 onnx.ai。 |
+| **ONNX parser** | **ONNX 解析器** | A parser for creating a TensorRT network definition from an ONNX model. For more details on the C++ ONNX Parser, refer to the NvONNXParser or the Python ONNX Parser. <br> 用于从 ONNX 模型创建 TensorRT 网络定义的解析器。有关 C++ ONNX 解析器的更多详细信息，请参阅 NvONNXParser 或 Python ONNX 解析器。 |
+| **Plan** | **计划** | An optimized inference engine in a serialized format. To initialize the inference engine, the application will first deserialize the model from the plan file. A typical application will build an engine once, and then serialize it as a plan file for later use. <br> 序列化格式的优化推理引擎。为了初始化推理引擎，应用程序将首先从计划文件中反序列化模型。典型的应用程序将构建一次引擎，然后将其序列化为计划文件以供以后使用。 |
+| **Precision** | **精确** | Refers to the numerical format used to represent values in a computational method. This option is specified as part of the TensorRT build step. TensorRT supports mixed precision inference with FP32, TF32, FP16, or INT8 precisions. Devices before NVIDIA Ampere Architecture default to FP32. NVIDIA Ampere Architecture and later devices default to TF32, a fast format using FP32 storage with lower-precision math. <br> 指计算方法中用于表示值的数字格式。此选项被指定为 TensorRT 构建步骤的一部分。TensorRT 支持 FP32、TF32、FP16 或 INT8 精度的混合精度推理。NVIDIA Ampere 架构之前的设备默认为 FP32。NVIDIA Ampere 架构和更高版本的设备默认使用 TF32，这是一种使用具有较低精度数学的 FP32 存储的快速格式。 |
+| **Runtime** | **运行时** | The component of TensorRT that performs inference on a TensorRT engine. The runtime API supports synchronous and asynchronous execution, profiling, enumeration, and querying of the bindings for engine inputs and outputs. <br> 在 TensorRT 引擎上执行推理的 TensorRT 组件。运行时 API 支持引擎输入和输出的绑定的同步和异步执行、分析、枚举和查询。 |
+| **TF-TRT** | **TF-TRT** | TensorFlow integration with TensorRT. Optimizes and executes compatible subgraphs, allowing TensorFlow to execute the remaining graph. <br> TensorFlow 与 TensorRT 集成。优化并执行兼容的子图，允许 TensorFlow 执行剩余的图。 |
 
 ## 6. F&Q
 
