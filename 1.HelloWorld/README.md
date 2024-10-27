@@ -293,6 +293,8 @@ $ make
 $ ./bin/segmentation_tutorial
 ```
 
+![Test Image, Size 1282x1026](./assets/output.ppm)
+
 以下步骤展示了如何使用 [Deserializing A Plan](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#perform_inference_c) 进行推理。
 
 1. 从文件反序列化 TensorRT 引擎。文件内容被读入缓冲区并在内存中反序列化。
@@ -438,3 +440,18 @@ T
 TF-TRT
 TensorFlow integration with TensorRT. Optimizes and executes compatible subgraphs, allowing TensorFlow to execute the remaining graph.
 TensorFlow 与 TensorRT 集成。优化并执行兼容的子图，允许 TensorFlow 执行剩余的图。
+
+## 6. F&Q
+
+- Q: Error (Could not find any implementation for node ArgMax_260.)
+
+A: To fix this problem just add the workspace size with --workspace=4096 option. This because the workspace is not enough for tensorrt 8.X.
+Here list a example of the changed cmd:
+trtexec --onnx=fcn-resnet101.onnx --fp16 --workspace=4096 --minShapes=input:1x3x256x256 --optShapes=input:1x3x1026x1282 --maxShapes=input:1x3x1440x2560 --buildOnly --saveEngine=fcn-resnet101.engine
+Thanks to jasxu-nvidia 3 's comments
+reference from Quick Start, Unable to prepare engine · Issue #1965 · NVIDIA/TensorRT · GitHub 20
+> 需要注意：tensorRT 10.5不支持 --workspace=4096 和 --buildOnly，这条命令是在容器中使用的。
+
+- Q: FCN-ResNet-101 例子 Segmentation fault (core dumped)
+
+A: 上文中的 nvidia-docker 使用的tensorRT版本是7.2.2.1，而我们使用的是10.5，尽管示例代码是基于10.5的。所以在构建engine和make项目时应使用本机的tensorRT版本，即10.5。最后在本机运行即可。
