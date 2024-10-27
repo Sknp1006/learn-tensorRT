@@ -176,6 +176,7 @@ export PATH=/usr/src/tensorrt/bin:$PATH
 
 ## 2.参考资料
 - 官方：
+  - [TensorRT 10.5.0 文档](https://docs.nvidia.com/deeplearning/tensorrt/api/c_api/index.html) 
   - [trt-samples-for-hackathon-cn](https://github.com/NVIDIA/trt-samples-for-hackathon-cn) 
   - [Quick Start Guide :: NVIDIA Deep Learning TensorRT Documentation](https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/) 
   - [Speeding Up Deep Learning Inference Using NVIDIA TensorRT (Updated) | NVIDIA Technical Blog](https://developer.nvidia.com/blog/speeding-up-deep-learning-inference-using-tensorrt-updated/) 
