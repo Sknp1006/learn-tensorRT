@@ -24,7 +24,7 @@ TensorRT 生态系统分为两部分：
 
 2. 用户在部署其优化的 TensorRT 引擎时可以使用 TensorRT 定位的各种运行时。
 
-![Main Options Available for Conversion and Deployment](./assets/conversion-opt-1730037903164-3.png)
+![Main Options Available for Conversion and Deployment](./assets/conversion-opt.png)
 
 #### 1.2.1 转换
 
